@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: #f5ad58;
+  --color-primary-hover: #f29528;
+  --color-secondary: #3399cc;
+  --color-secondary-hover: #f29528;
+  --color-tertiary: #99cc33;
+  --color-tertiary-hover: #f29528;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +28,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary), Arial, Helvetica, sans-serif;
 }
