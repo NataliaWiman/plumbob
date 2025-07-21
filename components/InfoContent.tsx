@@ -65,7 +65,7 @@ export default function InfoContent() {
   }, [search, simsSort, simMarkedFilter, marked]);
 
   return (
-    <section className="w-full md:w-6xl mx-auto px-4">
+    <section className="w-full md:w-6xl mx-auto px-4 pb-8">
       {/* Tabs */}
       <div className="mb-4 flex gap-6 justify-center">
         {(["worlds", "households", "sims"] as ViewMode[]).map((v) => (
@@ -89,7 +89,7 @@ export default function InfoContent() {
       </div>
 
       {/* Search */}
-      <div className="mb-6 flex justify-center">
+      <div className="relative w-72 mb-6 mx-auto flex justify-center">
         <input
           type="text"
           placeholder={`Search ${view}...`}
@@ -97,6 +97,27 @@ export default function InfoContent() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        {search && (
+          <button
+            onClick={() => setSearch("")}
+            className="absolute top-3 right-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-5 h-5"
+            >
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+        )}
       </div>
 
       {view === "worlds" && (
@@ -138,7 +159,7 @@ export default function InfoContent() {
 
       {view === "households" && (
         <>
-          <div className="flex flex-wrap justify-center items-end mb-6 gap-6">
+          <div className="flex flex-wrap justify-center items-end mb-6 gap-2 md:gap-6">
             <label className="flex flex-col text-xs font-semibold text-neutral-600">
               <span className="mb-1">Filter by world</span>
               <select
@@ -195,7 +216,7 @@ export default function InfoContent() {
             </button>
           </div>
 
-          <ul className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <ul className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6">
             {visibleHouseholds.map((h) => {
               return (
                 <li key={h.id}>
@@ -216,7 +237,7 @@ export default function InfoContent() {
 
       {view === "sims" && (
         <>
-          <div className="flex flex-wrap justify-center items-end mb-6 gap-6">
+          <div className="flex flex-wrap justify-center items-end mb-6 gap-2 md:gap-6">
             <label className="flex flex-col text-xs font-semibold text-neutral-600">
               <span className="mb-1">Sort sims</span>
               <select
